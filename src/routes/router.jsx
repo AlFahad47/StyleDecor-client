@@ -25,6 +25,8 @@ import UsersManagement from "../pages/UsersManagement/UsersManagement";
 import ManageDecorators from "../pages/Manage/ManageDecorators";
 import ManageServices from "../pages/Manage/ManageServices";
 import ManageBookings from "../pages/Manage/ManageBookings";
+import About from "../pages/About/About";
+import Contact from "../pages/Contact/Contact";
 
 export const router = createBrowserRouter([
   {
@@ -39,6 +41,14 @@ export const router = createBrowserRouter([
       {
         path: "services",
         Component: Services,
+      },
+      {
+        path: "about",
+        Component: About,
+      },
+      {
+        path: "contact",
+        Component: Contact,
       },
       {
         path: "services/:id",
