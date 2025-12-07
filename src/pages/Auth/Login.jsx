@@ -1,17 +1,60 @@
-import { Link } from "react-router";
+import { useForm } from "react-hook-form";
+import { Link, useLocation, useNavigate } from "react-router";
 import styled from "styled-components";
+import useAuth from "../../hooks/useAuth";
+import { toast } from "react-toastify";
 
 const Login = () => {
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
+  const { signInUser } = useAuth();
+  const location = useLocation();
+  const navigate = useNavigate();
+  const handleLogin = (data) => {
+    console.log("form data", data);
+    signInUser(data.email, data.password)
+      .then((result) => {
+        toast.success("Signin successful");
+        console.log(result.user);
+        navigate(location?.state || "/");
+      })
+      .catch((error) => {
+        toast.error(error.message);
+        console.log(error);
+      });
+  };
   return (
     <div className="h-[70vh] flex justify-center items-center">
       <StyledWrapper>
         <div className="form-box mx-auto">
-          <form className="form ">
+          <form className="form " onSubmit={handleSubmit(handleLogin)}>
             <span className="title">Login</span>
             <span className="subtitle">Login in to your account.</span>
             <div className="form-container">
-              <input type="email" className="input" placeholder="Email" />
-              <input type="password" className="input" placeholder="Password" />
+              <input
+                type="email"
+                {...register("email", { required: true })}
+                className="input"
+                placeholder="Email"
+              />
+              {errors.email?.type === "required" && (
+                <p className="text-red-500">Email is required</p>
+              )}
+
+              <input
+                type="password"
+                {...register("password", { required: true, minLength: 6 })}
+                className="input"
+                placeholder="Password"
+              />
+              {errors.password?.type === "minLength" && (
+                <p className="text-red-500">
+                  Password must be 6 characters or longer{" "}
+                </p>
+              )}
             </div>
             <button>Sign up</button>
           </form>
