@@ -60,14 +60,6 @@ export const router = createBrowserRouter([
         path: "coverage-map",
         Component: CoverageMap,
       },
-    ],
-  },
-
-  // auth
-  {
-    path: "/",
-    Component: AuthLayout,
-    children: [
       {
         path: "login",
         Component: Login,
@@ -77,6 +69,13 @@ export const router = createBrowserRouter([
         Component: Register,
       },
     ],
+  },
+
+  // auth
+  {
+    path: "/",
+    Component: AuthLayout,
+    children: [],
   },
 
   // dashboard

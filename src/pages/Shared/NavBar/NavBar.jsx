@@ -84,8 +84,7 @@ const NavBar = () => {
             to="/"
             className="flex justify-center items-center font-bold "
           >
-            <h2>logo</h2>
-            StyleDecor
+            <span className="text-yellow-400 p-1">Style</span>Decor
           </NavLink>
         </div>
         <div className="navbar-center hidden lg:flex nav-new">
