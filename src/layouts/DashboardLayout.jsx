@@ -6,6 +6,12 @@ import {
   FaTasks,
   FaUsers,
 } from "react-icons/fa";
+import {
+  MdManageAccounts,
+  MdMiscellaneousServices,
+  MdDesignServices,
+} from "react-icons/md";
+
 import { Link, NavLink, Outlet } from "react-router";
 
 import { RiEBikeFill } from "react-icons/ri";
@@ -85,16 +91,7 @@ const DashboardLayout = () => {
             </li>
 
             {/* our dashboard links */}
-            <li>
-              <NavLink
-                className="is-drawer-close:tooltip is-drawer-close:tooltip-right"
-                data-tip="MyParcels"
-                to="/dashboard/my-parcels"
-              >
-                <CiDeliveryTruck />
-                <span className="is-drawer-close:hidden">My Parcels</span>
-              </NavLink>
-            </li>
+
             <li>
               <NavLink
                 className="is-drawer-close:tooltip is-drawer-close:tooltip-right"
@@ -105,29 +102,79 @@ const DashboardLayout = () => {
                 <span className="is-drawer-close:hidden">Payment History</span>
               </NavLink>
             </li>
-            {role === "rider" && (
+            {role === "user" && (
               <>
                 <li>
                   <NavLink
                     className="is-drawer-close:tooltip is-drawer-close:tooltip-right"
-                    data-tip="Assigned Deliveries"
-                    to="/dashboard/assigned-deliveries"
+                    data-tip="My Bookings"
+                    to="/dashboard/my-bookings"
+                  >
+                    <FaTasks />
+                    <span className="is-drawer-close:hidden">My Bookings</span>
+                  </NavLink>
+                </li>
+                <li>
+                  <NavLink
+                    className="is-drawer-close:tooltip is-drawer-close:tooltip-right"
+                    data-tip="Payment History"
+                    to="/dashboard/payment-history"
+                  >
+                    <SiGoogletasks />
+                    <span className="is-drawer-close:hidden">
+                      Payment History
+                    </span>
+                  </NavLink>
+                </li>
+              </>
+            )}
+            {role === "decorator" && (
+              <>
+                <li>
+                  <NavLink
+                    className="is-drawer-close:tooltip is-drawer-close:tooltip-right"
+                    data-tip="My Assigned Projects"
+                    to="/dashboard/assigned-projects"
                   >
                     <FaTasks />
                     <span className="is-drawer-close:hidden">
-                      Assigned Deliveries
+                      My Assigned Projects
                     </span>
                   </NavLink>
                 </li>
                 <li>
                   <NavLink
                     className="is-drawer-close:tooltip is-drawer-close:tooltip-right"
-                    data-tip="Completed Deliveries"
-                    to="/dashboard/completed-deliveries"
+                    data-tip="Today's Schedule"
+                    to="/dashboard/schedule"
                   >
                     <SiGoogletasks />
                     <span className="is-drawer-close:hidden">
-                      Completed Deliveries
+                      Today's Schedule
+                    </span>
+                  </NavLink>
+                </li>
+                <li>
+                  <NavLink
+                    className="is-drawer-close:tooltip is-drawer-close:tooltip-right"
+                    data-tip="Today's Schedule"
+                    to="/dashboard/schedule"
+                  >
+                    <SiGoogletasks />
+                    <span className="is-drawer-close:hidden">
+                      Update Project Status
+                    </span>
+                  </NavLink>
+                </li>
+                <li>
+                  <NavLink
+                    className="is-drawer-close:tooltip is-drawer-close:tooltip-right"
+                    data-tip="Today's Schedule"
+                    to="/dashboard/schedule"
+                  >
+                    <SiGoogletasks />
+                    <span className="is-drawer-close:hidden">
+                      Earnings Summary
                     </span>
                   </NavLink>
                 </li>
@@ -140,24 +187,25 @@ const DashboardLayout = () => {
                 <li>
                   <NavLink
                     className="is-drawer-close:tooltip is-drawer-close:tooltip-right"
-                    data-tip="Approve Riders"
-                    to="/dashboard/approve-riders"
+                    data-tip="Manage Decorators"
+                    to="/dashboard/manage-decorators"
                   >
-                    <FaMotorcycle />
+                    <MdDesignServices />
                     <span className="is-drawer-close:hidden">
-                      Approve Riders
+                      Manage Decorators
                     </span>
                   </NavLink>
                 </li>
                 <li>
                   <NavLink
                     className="is-drawer-close:tooltip is-drawer-close:tooltip-right"
-                    data-tip="Assign Riders"
-                    to="/dashboard/assign-riders"
+                    data-tip="Manage Services & Packages"
+                    to="/dashboard/manage-services"
                   >
-                    <RiEBikeFill />
+                    <MdMiscellaneousServices />
+
                     <span className="is-drawer-close:hidden">
-                      Assign Riders
+                      Manage Services & Packages
                     </span>
                   </NavLink>
                 </li>
@@ -165,11 +213,24 @@ const DashboardLayout = () => {
                   <NavLink
                     className="is-drawer-close:tooltip is-drawer-close:tooltip-right"
                     data-tip="Users Management"
-                    to="/dashboard/users-management"
+                    to="/dashboard/manage-users"
+                  >
+                    <MdManageAccounts />
+
+                    <span className="is-drawer-close:hidden">
+                      Users Management
+                    </span>
+                  </NavLink>
+                </li>
+                <li>
+                  <NavLink
+                    className="is-drawer-close:tooltip is-drawer-close:tooltip-right"
+                    data-tip="Manage Bookings"
+                    to="/dashboard/manage-bookings"
                   >
                     <FaUsers></FaUsers>
                     <span className="is-drawer-close:hidden">
-                      Users Management
+                      Manage Bookings
                     </span>
                   </NavLink>
                 </li>
