@@ -5,7 +5,8 @@ import { FaSun } from "react-icons/fa6";
 import { FaMoon } from "react-icons/fa";
 
 import useAuth from "../../../hooks/useAuth";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
+import { ThemeContext } from "../../../contexts/ThemeProvider";
 
 const NavBar = () => {
   const location = useLocation();
@@ -21,19 +22,7 @@ const NavBar = () => {
       });
   };
 
-  const [theme, setTheme] = useState(() => {
-    return localStorage.getItem("theme") || "light";
-  });
-
-  useEffect(() => {
-    document.documentElement.setAttribute("data-theme", theme);
-    localStorage.setItem("theme", theme);
-  }, [theme]);
-
-  const toggleTheme = () => {
-    setTheme((prevTheme) => (prevTheme === "light" ? "dark" : "light"));
-  };
-
+  const { theme, toggleTheme } = useContext(ThemeContext);
   const navLinks = (
     <>
       <li>

@@ -6,7 +6,7 @@ const Footer = () => {
       <div className=" p-10 max-w-7xl mx-auto  ">
         <div className="flex md:flex-row flex-col md:justify-between items-center md:items-baseline-last">
           <nav className="text-center md:text-left">
-            <h2 className="text-3xl font-bold text-primary">StyleDecor</h2>
+            <h2 className="text-3xl font-bold text-white">StyleDecor</h2>
             <p className="font-medium mt-2">
               Premium Decoration Services.
               <br />
