@@ -148,43 +148,64 @@ const ManageServices = () => {
         </button>
       </div>
 
-      <div className="shadow-xl">
-        <table className="sm:table w-full flex flex-row justify-center  overflow-hidden">
-          <thead>
-            {services.map((service, index) => (
-              <tr
-                key={index}
-                className={`flex flex-col mb-10 bg-primary text-left sm:text-center  gap-4 pr-5 pl-4 py-5 rounded-l-xl  ${
-                  index === 0 ? "sm:table-row" : "sm:hidden"
-                }`}
-              >
-                <th>#</th>
-                <th className="h-[48px]">Image</th>
-                <th>Service Name</th>
-                <th>Price</th>
-                <th>Category</th>
-                <th className="h-[31.99px]">Action</th>
-              </tr>
-            ))}
+      <div className="w-full">
+        <table className="w-full ">
+          <thead className="hidden md:table-header-group bg-base-200">
+            <tr>
+              <th className="p-3 text-left">#</th>
+              <th className="p-3 text-left">Image</th>
+              <th className="p-3 text-left">Service Name</th>
+              <th className="p-3 text-left">Price</th>
+              <th className="p-3 text-left">Category</th>
+              <th className="p-3 text-left">Action</th>
+            </tr>
           </thead>
-          <tbody>
+          <tbody className="flex flex-col gap-4 md:table-row-group">
             {services.map((service, index) => (
               <tr
-                className="flex flex-col mb-10 bg-primary text-right md:text-center sm:table-row gap-4  pl-4 py-5 pr-4 rounded-r-xl "
+                className="flex flex-col md:table-row bg-base-200 md:bg-transparent shadow-md md:shadow-none rounded-xl md:rounded-none border md:border-b p-4 md:p-0"
                 key={service._id}
               >
-                <th>{index + 1}</th>
-                <td>
+                <td className="flex justify-between md:table-cell md:p-3 py-1 ">
+                  <span className="font-bold md:hidden text-gray-500">#</span>
+                  <span className="font-bold text-primary-content md:font-normal md:text-inherit">
+                    {index + 1}
+                  </span>
+                </td>
+                <td className="flex justify-between md:table-cell md:p-3 py-1">
                   <div className="avatar">
                     <div className="rounded-lg  w-12 h-12">
                       <img src={service.img} alt="Service" />
                     </div>
                   </div>
                 </td>
-                <td>{service.service_name}</td>
-                <td>{service.price} BDT</td>
-                <td>{service.category}</td>
-                <td className="flex gap-2">
+
+                <td className="flex justify-between md:table-cell md:p-3 py-1">
+                  <span className="font-bold md:hidden text-gray-500">
+                    Name
+                  </span>
+                  <span className="text-sm md:text-base break-all">
+                    {service.service_name}
+                  </span>
+                </td>
+                <td className="flex justify-between md:table-cell md:p-3 py-1">
+                  <span className="font-bold md:hidden text-gray-500">
+                    Price
+                  </span>
+                  <span className="text-sm md:text-base break-all">
+                    {service.price} BDT
+                  </span>
+                </td>
+                <td className="flex justify-between md:table-cell md:p-3 py-1">
+                  <span className="font-bold md:hidden text-gray-500">
+                    Category
+                  </span>
+                  <span className="text-sm md:text-base break-all">
+                    {service.category}
+                  </span>
+                </td>
+
+                <td className="flex justify-between items-center   md:table-cell md:p-3  py-1 border-t md:border-none mt-2 md:mt-0  space-x-2.5 ">
                   <button
                     onClick={() => openEditModal(service)}
                     className="btn btn-ghost btn-sm bg-orange-500 text-white"

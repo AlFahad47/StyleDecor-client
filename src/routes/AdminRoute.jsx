@@ -11,7 +11,7 @@ const AdminRoute = ({ children }) => {
   }
 
   if (role !== "admin") {
-    return <Forbidden></Forbidden>;
+    return <h2>User error</h2>;
   }
 
   return children;

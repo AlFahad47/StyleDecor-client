@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import { CiDeliveryTruck } from "react-icons/ci";
 import {
   FaMotorcycle,
@@ -11,20 +11,25 @@ import {
   MdMiscellaneousServices,
   MdDesignServices,
 } from "react-icons/md";
-
+import { FaSun } from "react-icons/fa6";
+import { FaMoon } from "react-icons/fa";
 import { Link, NavLink, Outlet } from "react-router";
 
 import { RiEBikeFill } from "react-icons/ri";
 import { SiGoogletasks } from "react-icons/si";
 import useRole from "../hooks/useRole";
+import { ThemeContext } from "../contexts/ThemeProvider";
 
 const DashboardLayout = () => {
+  const { theme, toggleTheme } = useContext(ThemeContext);
+
   const { role } = useRole();
   return (
     <div className="drawer lg:drawer-open max-w-7xl mx-auto ">
       <input id="my-drawer-4" type="checkbox" className="drawer-toggle" />
       <div className="drawer-content">
         {/* Navbar */}
+
         <nav className="navbar w-full bg-base-300">
           <label
             htmlFor="my-drawer-4"
@@ -48,7 +53,11 @@ const DashboardLayout = () => {
             </svg>
           </label>
           <div className="px-4">StyleDecor Dashboard</div>
+          <button onClick={toggleTheme} className="btn btn-ghost btn-circle  ">
+            {theme === "light" ? <FaSun size={20} /> : <FaMoon size={20} />}
+          </button>
         </nav>
+
         {/* Page content here */}
         <Outlet></Outlet>
       </div>
