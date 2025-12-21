@@ -69,9 +69,3 @@ I chose the **MERN Stack** for its flexibility and robust ecosystem. Here are th
 | **Auth**      | `firebase-admin` | Verifying Firebase tokens on the server |
 | **Security**  | `cors`, `dotenv` | Middleware & Env variables              |
 | **Payments**  | `stripe`         | Server-side payment processing          |
-
----
-
-```
-
-```
