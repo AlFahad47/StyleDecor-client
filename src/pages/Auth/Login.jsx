@@ -56,7 +56,7 @@ const Login = () => {
                 </p>
               )}
             </div>
-            <button>Sign up</button>
+            <button>Login</button>
           </form>
           <div className="form-section">
             <p>
