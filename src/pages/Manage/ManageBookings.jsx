@@ -1,15 +1,27 @@
 import { useQuery } from "@tanstack/react-query";
 import useAxiosSecure from "../../hooks/useAxiosSecure";
 import Swal from "sweetalert2";
-import { FaUserTie, FaCheckCircle, FaClock } from "react-icons/fa";
+import {
+  FaUserTie,
+  FaCheckCircle,
+  FaClock,
+  FaSortAmountDown,
+  FaSortAmountUp,
+} from "react-icons/fa";
+import { useState } from "react";
 
 const ManageBookings = () => {
   const axiosSecure = useAxiosSecure();
 
+  const [sortBy, setSortBy] = useState("");
+  const [sortOrder, setSortOrder] = useState("desc");
+
   const { data: bookings = [], refetch } = useQuery({
-    queryKey: ["all-bookings"],
+    queryKey: ["all-bookings", sortBy, sortOrder],
     queryFn: async () => {
-      const res = await axiosSecure.get("/admin/bookings");
+      const res = await axiosSecure.get(
+        `/admin/bookings?sort=${sortBy}&order=${sortOrder}`
+      );
       return res.data;
     },
   });
@@ -46,12 +58,35 @@ const ManageBookings = () => {
     });
   };
 
+  const toggleOrder = () => {
+    setSortOrder((prev) => (prev === "asc" ? "desc" : "asc"));
+  };
   return (
     <div className="p-8 w-full">
       <h2 className="text-3xl font-bold mb-6">
         Manage Bookings and Assign Decorator
       </h2>
+      <div className="flex items-center gap-2 bg-base-200 p-2   mb-2 ">
+        <span className="font-bold text-sm ">Sort By:</span>
 
+        <select
+          className="select select-bordered select-sm"
+          onChange={(e) => setSortBy(e.target.value)}
+          value={sortBy}
+        >
+          <option value="">Default (Newest)</option>
+          <option value="date">Event Date</option>
+          <option value="status">Payment Status</option>
+        </select>
+
+        <button
+          onClick={toggleOrder}
+          className="btn btn-square btn-sm btn-ghost"
+          title="Toggle Order"
+        >
+          {sortOrder === "asc" ? <FaSortAmountUp /> : <FaSortAmountDown />}
+        </button>
+      </div>
       <div className="w-full">
         <table className="table w-full">
           <thead className="hidden md:table-header-group bg-base-200">
@@ -69,7 +104,7 @@ const ManageBookings = () => {
             {bookings.map((item, index) => (
               <tr
                 key={item._id}
-                className="flex flex-col md:table-row bg-base-200 md:bg-transparent shadow-md md:shadow-none rounded-xl md:rounded-none border md:border-b p-4 md:p-0"
+                className="flex flex-col md:table-row bg-base-200 md:bg-transparent shadow-2xl dark:shadow-white/20 md:shadow-none   p-4 md:p-0"
               >
                 <td className="flex justify-between md:table-cell md:p-3 py-1 ">
                   <span className="font-bold md:hidden text-gray-500">#</span>
@@ -143,7 +178,7 @@ const ManageBookings = () => {
                         </>
                       ) : (
                         <select
-                          className="select select-bordered select-sm w-full max-w-xs border-primary text-primary-content"
+                          className="select select-bordered select-sm w-full max-w-xs border-primary  bg-base-300 text-primary-content"
                           onChange={(e) =>
                             handleAssign(item._id, e.target.value)
                           }
