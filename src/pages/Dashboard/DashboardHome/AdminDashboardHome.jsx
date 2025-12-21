@@ -99,7 +99,6 @@ const AdminDashboardHome = () => {
       </div>
 
       <div className="flex flex-col lg:flex-row gap-8">
-        {/* CHART 1: Service Demand (Bar Chart) */}
         <div className="w-full lg:w-1/2 bg-base-200 p-6 rounded-xl shadow-xl border">
           <h3 className="text-xl font-bold mb-6 text-center">
             Service Demand (Most Popular)

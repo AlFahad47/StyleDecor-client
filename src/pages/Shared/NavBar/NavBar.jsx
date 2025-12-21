@@ -45,7 +45,7 @@ const NavBar = () => {
   );
   return (
     <div>
-      <div className="navbar bg-base-100 shadow-sm">
+      <div className="navbar bg-base-200 shadow-sm">
         <div className="navbar-start">
           <div className="dropdown">
             <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -114,7 +114,7 @@ const NavBar = () => {
                 className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow"
               >
                 <li>
-                  <Link to="/profile">My Profile</Link>
+                  <Link to="/dashboard/profile">My Profile</Link>
                 </li>
                 <li>
                   <a>{user?.email}</a>

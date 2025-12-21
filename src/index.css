@@ -1,4 +1,8 @@
 @import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap");
+
+@import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Metal&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap");
+
 @import "tailwindcss";
 @plugin "daisyui";
 @custom-variant dark (&:where(.dark, .dark *));
@@ -9,15 +13,15 @@
   prefersdark: false;
   color-scheme: light;
 
-  --color-base-100: oklch(98% 0.02 240);
+  --color-base-100: oklch(90% 0.03 240);
   --color-base-200: oklch(95% 0.03 240);
   --color-base-300: oklch(92% 0.04 240);
   --color-base-content: oklch(20% 0.05 240);
 
-  --color-primary: oklch(98% 0 0); /* white */
-  --color-primary-content: oklch(20% 0.05 240); /* dark text */
-  --color-secondary: oklch(70% 0.25 200);
-  --color-secondary-content: oklch(98% 0.01 200);
+  --color-primary: oklch(98.45% 0.0026 106);
+  --color-primary-content: oklch(19.57% 0 0);
+  --color-secondary: oklch(95.14% 0.0032 17);
+  --color-secondary-content: oklch(49.26% 0 0);
 }
 
 @plugin "daisyui/theme" {
@@ -26,16 +30,27 @@
   prefersdark: true;
   color-scheme: dark;
 
-  --color-base-100: oklch(10% 0.02 240); /* dark background */
+  --color-base-100: oklch(10% 0.02 240);
   --color-base-200: oklch(15% 0.03 240);
   --color-base-300: oklch(20% 0.04 240);
-  --color-base-content: oklch(98% 0.01 240); /* light text */
+  --color-base-content: oklch(98% 0.01 240);
 
-  --color-primary: oklch(22% 0 0); /* black */
-  --color-primary-content: oklch(98% 0.01 240); /* white text */
+  --color-primary: oklch(22% 0 0);
+  --color-primary-content: oklch(98% 0.01 240);
   --color-secondary: oklch(320 0.25 60);
-  --color-secondary-content: oklch(98% 0.01 200);
+  --color-secondary-content: oklch(69.26% 0 0);
 }
 * {
   font-family: "Inter", sans-serif;
+}
+html {
+  @apply bg-primary;
+}
+
+.montserrat {
+  font-family: "Montserrat", sans-serif;
+}
+
+.metal-regular {
+  font-family: "Metal", serif;
 }

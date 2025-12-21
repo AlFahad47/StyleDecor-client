@@ -9,6 +9,7 @@ import {
   FaCheckCircle,
   FaWallet,
 } from "react-icons/fa";
+import Loading from "../../../components/Loading";
 
 const UserDashboardHome = () => {
   const { user } = useAuth();
@@ -23,12 +24,7 @@ const UserDashboardHome = () => {
     enabled: !!user?.email,
   });
 
-  if (isLoading)
-    return (
-      <div className="text-center mt-20">
-        <span className="loading loading-bars loading-lg"></span>
-      </div>
-    );
+  if (isLoading) return <Loading />;
 
   return (
     <div className="p-4 md:p-8 w-full">

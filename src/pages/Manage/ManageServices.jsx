@@ -149,7 +149,7 @@ const ManageServices = () => {
       </div>
 
       <div className="w-full">
-        <table className="w-full ">
+        <table className="w-full table ">
           <thead className="hidden md:table-header-group bg-base-200">
             <tr>
               <th className="p-3 text-left">#</th>
@@ -163,7 +163,7 @@ const ManageServices = () => {
           <tbody className="flex flex-col gap-4 md:table-row-group">
             {services.map((service, index) => (
               <tr
-                className="flex flex-col md:table-row bg-base-200 md:bg-transparent shadow-md md:shadow-none rounded-xl md:rounded-none border md:border-b p-4 md:p-0"
+                className="flex flex-col md:table-row bg-base-200 md:bg-transparent shadow-2xl dark:shadow-white/20 md:shadow-none   p-4 md:p-0"
                 key={service._id}
               >
                 <td className="flex justify-between md:table-cell md:p-3 py-1 ">
@@ -205,7 +205,7 @@ const ManageServices = () => {
                   </span>
                 </td>
 
-                <td className="flex justify-between items-center   md:table-cell md:p-3  py-1 border-t md:border-none mt-2 md:mt-0  space-x-2.5 ">
+                <td className="flex justify-between items-center   md:table-cell md:p-3  py-1  my-2 md:my-0  space-x-2.5 ">
                   <button
                     onClick={() => openEditModal(service)}
                     className="btn btn-ghost btn-sm bg-orange-500 text-white"
@@ -225,8 +225,8 @@ const ManageServices = () => {
         </table>
       </div>
 
-      <dialog id="service_modal" className="modal">
-        <div className="modal-box w-11/12 max-w-2xl">
+      <dialog id="service_modal" className="modal ">
+        <div className="modal-box w-11/12 max-w-2xl bg-base-200">
           <h3 className="font-bold text-lg mb-4">
             {editingService
               ? `Edit Service: ${editingService.service_name}`
@@ -241,7 +241,7 @@ const ManageServices = () => {
               <input
                 {...register("name", { required: true })}
                 type="text"
-                className="input input-bordered w-full"
+                className="input input-bordered w-full bg-base-300"
               />
               {errors.name && (
                 <span className="text-red-500 text-xs">Name is required</span>
@@ -259,7 +259,7 @@ const ManageServices = () => {
                     required: true,
                     validate: (v) => v !== "default",
                   })}
-                  className="select select-bordered w-full"
+                  className="select select-bordered w-full  bg-base-300"
                 >
                   <option disabled value="default">
                     Select Category
@@ -276,7 +276,7 @@ const ManageServices = () => {
                 <input
                   {...register("price", { required: true })}
                   type="number"
-                  className="input input-bordered w-full"
+                  className="input input-bordered w-full  bg-base-300"
                 />
               </div>
             </div>
@@ -289,7 +289,7 @@ const ManageServices = () => {
                 <input
                   {...register("unit", { required: true })}
                   type="text"
-                  className="input input-bordered w-full"
+                  className="input input-bordered w-full  bg-base-300"
                 />
               </div>
 
@@ -304,7 +304,7 @@ const ManageServices = () => {
                 <input
                   {...register("image")}
                   type="file"
-                  className="file-input file-input-bordered w-full"
+                  className="file-input file-input-bordered w-full  bg-base-300"
                 />
 
                 {imageError && (
@@ -321,7 +321,7 @@ const ManageServices = () => {
               </label>
               <textarea
                 {...register("description", { required: true })}
-                className="textarea textarea-bordered h-24"
+                className="textarea textarea-bordered h-24 w-full  bg-base-300"
               ></textarea>
             </div>
 

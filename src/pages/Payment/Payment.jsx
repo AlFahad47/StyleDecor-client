@@ -80,7 +80,7 @@ const Payment = () => {
             {booking?.service_name}
           </h3>
           <p className="text-xl font-bold mb-6">
-            <span className="">Amount: </span> $
+            <span className="">Amount: </span> ৳
             {parseFloat(booking.price).toFixed(2)}
           </p>
 
@@ -89,7 +89,7 @@ const Payment = () => {
             className="btn btn-lg btn-primary text-primary-content w-full"
             disabled={!booking || booking.status === "paid"}
           >
-            Pay ${parseFloat(booking.price).toFixed(2)} Now
+            Pay ৳{parseFloat(booking.price).toFixed(2)} Now
           </button>
         </div>
       </div>

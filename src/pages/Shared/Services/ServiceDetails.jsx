@@ -2,12 +2,10 @@ import { useLoaderData, useNavigate } from "react-router";
 import { useState } from "react";
 
 import Swal from "sweetalert2";
-import {
-  FaMapMarkerAlt,
-  FaCalendarAlt,
-  FaCheckCircle,
-  FaDollarSign,
-} from "react-icons/fa";
+import { FaMapMarkerAlt, FaCalendarAlt, FaCheckCircle } from "react-icons/fa";
+import { TbCurrencyTaka } from "react-icons/tb";
+import { FaBangladeshiTakaSign } from "react-icons/fa6";
+
 import useAuth from "../../../hooks/useAuth";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
 
@@ -88,9 +86,9 @@ const ServiceDetails = () => {
   };
 
   return (
-    <div className="max-w-7xl mx-auto px-4 py-10">
+    <div className="max-w-7xl mx-auto px-4 py-10 ">
       {/* card */}
-      <div className="flex md:flex-row flex-col bg-base-100 shadow-xl dark:shadow-white/10 dark:shadow-xl overflow-hidden">
+      <div className="flex md:flex-row flex-col  shadow-xl dark:shadow-white/10 dark:shadow-xl overflow-hidden">
         <figure className="lg:w-1/2 h-[400px]">
           <img
             src={img}
@@ -99,33 +97,27 @@ const ServiceDetails = () => {
           />
         </figure>
         <div className="card-body lg:w-1/2 p-8 lg:p-12">
-          <div className="badge badge-primary-content badge-outline mb-4">
-            {category}
-          </div>
-          <h2 className="card-title text-4xl font-bold mb-4 ">
+          <h2 className="card-title text-2xl font-semibold mb-4 montserrat ">
             {service_name}
           </h2>
-          <p className="text-gray-600 text-lg leading-relaxed mb-6">
+          <div className="text-secondary-content ">{category}</div>
+          <p className="text-2xl font-semibold text-primary-content flex items-center my-4 montserrat">
+            <FaBangladeshiTakaSign />
+            {price}
+          </p>
+          <h2 className="font-semibold montserrat">Description</h2>
+          <p className="text-secondary-content  text-sm leading-relaxed mb-6 montserrat">
             {description}
           </p>
 
           <div className="grid grid-cols-2 gap-4 mb-8">
-            <div className="p-4 bg-base-200 rounded-lg">
-              <p className="text-sm text-gray-500">Price</p>
-              <p className="text-2xl font-bold text-primary-content flex items-center">
-                <FaDollarSign /> {price}
-              </p>
-            </div>
-            <div className="p-4 bg-base-200 rounded-lg">
+            <div className="">
               <p className="text-sm text-gray-500">Unit</p>
               <p className="text-xl font-bold">{unit}</p>
             </div>
-          </div>
-
-          <div className="card-actions justify-end mt-auto">
             <button
               onClick={handleBookClick}
-              className="btn btn-primary btn-lg w-full shadow-xl dark:shadow-white/10  dark:shadow-xl"
+              className="btn   w-full shadow-xl btn-action dark:shadow-white/10  dark:shadow-xl"
             >
               Book This Service
             </button>
@@ -135,7 +127,7 @@ const ServiceDetails = () => {
 
       {/* modal*/}
       <dialog id="booking_modal" className="modal modal-bottom sm:modal-middle">
-        <div className="modal-box">
+        <div className="modal-box bg-secondary">
           <h3 className="font-bold text-2xl text-center mb-6">
             Confirm Booking
           </h3>

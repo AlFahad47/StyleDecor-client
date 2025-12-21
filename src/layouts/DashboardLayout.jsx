@@ -11,6 +11,8 @@ import {
   MdMiscellaneousServices,
   MdDesignServices,
 } from "react-icons/md";
+import { CgProfile } from "react-icons/cg";
+
 import { FaSun } from "react-icons/fa6";
 import { FaMoon } from "react-icons/fa";
 import { Link, NavLink, Outlet } from "react-router";
@@ -73,7 +75,9 @@ const DashboardLayout = () => {
           <ul className="menu w-full grow">
             {/* List item */}
             <li>
-              <Link to="/">SD</Link>
+              <Link className="text-yellow-400   font-bold" to="/">
+                SD
+              </Link>
             </li>
             <li>
               <Link
@@ -101,7 +105,7 @@ const DashboardLayout = () => {
 
             {/* our dashboard links */}
 
-            <li>
+            {/* <li>
               <NavLink
                 className="is-drawer-close:tooltip is-drawer-close:tooltip-right"
                 data-tip="Payment History"
@@ -110,9 +114,20 @@ const DashboardLayout = () => {
                 <FaRegCreditCard />
                 <span className="is-drawer-close:hidden">Payment History</span>
               </NavLink>
-            </li>
+            </li> */}
             {role === "user" && (
               <>
+                <li>
+                  <NavLink
+                    className="is-drawer-close:tooltip is-drawer-close:tooltip-right"
+                    data-tip="My Profile"
+                    to="/dashboard/profile"
+                  >
+                    <CgProfile />
+
+                    <span className="is-drawer-close:hidden">My Profile</span>
+                  </NavLink>
+                </li>
                 <li>
                   <NavLink
                     className="is-drawer-close:tooltip is-drawer-close:tooltip-right"
@@ -166,24 +181,12 @@ const DashboardLayout = () => {
                 <li>
                   <NavLink
                     className="is-drawer-close:tooltip is-drawer-close:tooltip-right"
-                    data-tip="Today's Schedule"
-                    to="/dashboard/schedule"
+                    data-tip="Payment History"
+                    to="/dashboard/decorator-payment-history"
                   >
-                    <SiGoogletasks />
+                    <FaRegCreditCard />
                     <span className="is-drawer-close:hidden">
-                      Update Project Status
-                    </span>
-                  </NavLink>
-                </li>
-                <li>
-                  <NavLink
-                    className="is-drawer-close:tooltip is-drawer-close:tooltip-right"
-                    data-tip="Today's Schedule"
-                    to="/dashboard/schedule"
-                  >
-                    <SiGoogletasks />
-                    <span className="is-drawer-close:hidden">
-                      Earnings Summary
+                      Payment History
                     </span>
                   </NavLink>
                 </li>
@@ -199,7 +202,7 @@ const DashboardLayout = () => {
                     data-tip="Manage Decorators"
                     to="/dashboard/manage-decorators"
                   >
-                    <MdDesignServices />
+                    <FaUsers></FaUsers>
                     <span className="is-drawer-close:hidden">
                       Manage Decorators
                     </span>
@@ -221,23 +224,10 @@ const DashboardLayout = () => {
                 <li>
                   <NavLink
                     className="is-drawer-close:tooltip is-drawer-close:tooltip-right"
-                    data-tip="Users Management"
-                    to="/dashboard/manage-users"
-                  >
-                    <MdManageAccounts />
-
-                    <span className="is-drawer-close:hidden">
-                      Users Management
-                    </span>
-                  </NavLink>
-                </li>
-                <li>
-                  <NavLink
-                    className="is-drawer-close:tooltip is-drawer-close:tooltip-right"
                     data-tip="Manage Bookings"
                     to="/dashboard/manage-bookings"
                   >
-                    <FaUsers></FaUsers>
+                    <MdDesignServices />
                     <span className="is-drawer-close:hidden">
                       Manage Bookings
                     </span>
@@ -245,32 +235,6 @@ const DashboardLayout = () => {
                 </li>
               </>
             )}
-
-            {/* List item */}
-            <li>
-              <button
-                className="is-drawer-close:tooltip is-drawer-close:tooltip-right"
-                data-tip="Settings"
-              >
-                {/* Settings icon */}
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  viewBox="0 0 24 24"
-                  strokeLinejoin="round"
-                  strokeLinecap="round"
-                  strokeWidth="2"
-                  fill="none"
-                  stroke="currentColor"
-                  className="my-1.5 inline-block size-4"
-                >
-                  <path d="M20 7h-9"></path>
-                  <path d="M14 17H5"></path>
-                  <circle cx="17" cy="17" r="3"></circle>
-                  <circle cx="7" cy="7" r="3"></circle>
-                </svg>
-                <span className="is-drawer-close:hidden">Settings</span>
-              </button>
-            </li>
           </ul>
         </div>
       </div>

@@ -20,13 +20,12 @@ import DecoratorRoute from "./DecoratorRoute";
 import AssignedProjects from "../pages/Dashboard/AssignedProjects/AssignedProjects";
 import DecoratorSchedule from "../pages/Dashboard/DecoratorSchedule/DecoratorSchedule";
 import AdminRoute from "./AdminRoute";
-import AdminStatistics from "../pages/AdminStatistics/AdminStatistics";
-import UsersManagement from "../pages/UsersManagement/UsersManagement";
 import ManageDecorators from "../pages/Manage/ManageDecorators";
 import ManageServices from "../pages/Manage/ManageServices";
 import ManageBookings from "../pages/Manage/ManageBookings";
 import About from "../pages/About/About";
 import Contact from "../pages/Contact/Contact";
+import DecoratorPaymentHistory from "../pages/Payment/DecoratorPaymentHistory";
 
 export const router = createBrowserRouter([
   {
@@ -54,7 +53,9 @@ export const router = createBrowserRouter([
         path: "services/:id",
         Component: ServiceDetails,
         loader: ({ params }) =>
-          fetch(`http://localhost:3000/services/${params.id}`),
+          fetch(
+            `https://style-decor-server-omega.vercel.app/services/${params.id}`
+          ),
       },
       {
         path: "coverage-map",
@@ -132,24 +133,17 @@ export const router = createBrowserRouter([
           </DecoratorRoute>
         ),
       },
+      {
+        path: "decorator-payment-history",
+        element: (
+          <DecoratorRoute>
+            <DecoratorPaymentHistory />
+          </DecoratorRoute>
+        ),
+      },
 
       // admin
-      {
-        path: "statistics",
-        element: (
-          <AdminRoute>
-            <AdminStatistics />
-          </AdminRoute>
-        ),
-      },
-      {
-        path: "manage-users",
-        element: (
-          <AdminRoute>
-            <UsersManagement />
-          </AdminRoute>
-        ),
-      },
+
       {
         path: "manage-decorators",
         element: (
