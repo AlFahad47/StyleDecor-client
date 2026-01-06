@@ -88,7 +88,7 @@ const Register = () => {
     <div className="h-[70vh] flex justify-center items-center">
       {" "}
       <StyledWrapper className="">
-        <div className="form-box mx-auto">
+        <div className="bg-base-200  w-[320px] mx-auto rounded-xl">
           <form className="form" onSubmit={handleSubmit(handleRegistration)}>
             <span className="title">Sign up</span>
             <span className="subtitle">
@@ -179,7 +179,7 @@ const Register = () => {
             )}
             <button>Sign up</button>
           </form>
-          <div className="form-section">
+          <div className="form-section rounded-b-xl">
             <p>
               Have an account? <Link to="/login">login</Link>{" "}
             </p>

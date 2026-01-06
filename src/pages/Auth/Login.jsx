@@ -9,6 +9,7 @@ const Login = () => {
     register,
     handleSubmit,
     formState: { errors },
+    setValue,
   } = useForm();
   const { signInUser } = useAuth();
   const location = useLocation();
@@ -26,10 +27,21 @@ const Login = () => {
         console.log(error);
       });
   };
+
+  const handleDemoLogin = (role) => {
+    // Fill these with REAL credentials you created in your DB
+    if (role === "admin") {
+      setValue("email", "admin@gmail.com"); // Use react-hook-form setValue or state
+      setValue("password", "Aa@111");
+    } else {
+      setValue("email", "user@user.com");
+      setValue("password", "@123#Aa");
+    }
+  };
   return (
-    <div className="h-[70vh] flex justify-center items-center">
+    <div className="h-[70vh] flex justify-center items-center ">
       <StyledWrapper>
-        <div className="form-box mx-auto">
+        <div className=" bg-base-200  w-[320px] mx-auto rounded-xl ">
           <form className="form " onSubmit={handleSubmit(handleLogin)}>
             <span className="title">Login</span>
             <span className="subtitle">Login in to your account.</span>
@@ -57,8 +69,24 @@ const Login = () => {
               )}
             </div>
             <button>Login</button>
+            <div className="flex  gap-2 mb-4">
+              <button
+                type="button"
+                onClick={() => handleDemoLogin("admin")}
+                className="btn btn-sm btn-outline btn-info flex-1 "
+              >
+                Demo Admin
+              </button>
+              <button
+                type="button"
+                onClick={() => handleDemoLogin("user")}
+                className="btn btn-sm btn-outline btn-success flex-1"
+              >
+                Demo User
+              </button>
+            </div>
           </form>
-          <div className="form-section">
+          <div className="form-section rounded-b-xl">
             <p>
               Don't have an account? <Link to="/register">Register</Link>{" "}
             </p>
